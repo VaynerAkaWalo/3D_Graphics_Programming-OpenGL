@@ -35,15 +35,15 @@ void SimpleShapeApplication::init() {
 
     // A vector containing the x,y,z vertex coordinates for the triangle.
     std::vector<GLfloat> vertices = {
-            -0.5f, 0.0f, 0.0f,
-            0.5f, 0.0f, 0.0f,
-            0.0f, 0.5f, 0.0f,
-            -0.5f, 0.0f, 0.0f,
-            0.5f, 0.0f, 0.0f,
-            -0.5f, -0.5f, 0.0f,
-            -0.5f, -0.5f, 0.0f,
-            0.5f, 0.0f, 0.0f,
-            0.5f, -0.5f, 0.0f
+            -0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+            0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+            0.0f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
+            -0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+            0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
+            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
+            0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+            0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
     };
 
     /*
