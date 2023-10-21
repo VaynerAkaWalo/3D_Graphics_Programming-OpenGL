@@ -80,6 +80,7 @@ void SimpleShapeApplication::init() {
     OGL_CALL(glGenVertexArrays(1, &vao_));
     OGL_CALL(glBindVertexArray(vao_));
     OGL_CALL(glBindBuffer(GL_ARRAY_BUFFER, v_buffer_handle));
+    OGL_CALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, i_buffer_handle));
 
     /*
      * The following lines bound the vertex attribute 0 to the currently bound vertex buffer (the one we just created).
