@@ -48,6 +48,12 @@ void SimpleShapeApplication::init() {
             0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
     };
 
+    std::vector<GLubyte> indexes = {
+            0, 1, 2,
+            3, 4, 5,
+            6, 7, 8
+    };
+
     /*
      * All the calls to the OpenGL API are "encapsulated" in the OGL_CALL macro for debugging purposes as explained in
      * Assignments/DEBUGGING.md. The macro is defined in src/Application/utils.h. If the call to the OpenGL API returns an
