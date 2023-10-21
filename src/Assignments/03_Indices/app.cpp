@@ -68,6 +68,12 @@ void SimpleShapeApplication::init() {
     OGL_CALL(glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GLfloat), vertices.data(), GL_STATIC_DRAW));
     OGL_CALL(glBindBuffer(GL_ARRAY_BUFFER, 0));
 
+    GLuint i_buffer_handle;
+    OGL_CALL(glGenBuffers(1, &i_buffer_handle));
+    OGL_CALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, i_buffer_handle));
+    OGL_CALL(glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexes.size() * sizeof(GLubyte), indexes.data(), GL_STATIC_DRAW));
+    OGL_CALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+
     // This sets up a Vertex Array Object (VAO) that encapsulates
     // the state of all vertex buffers needed for rendering.
     // The vao_ variable is a member of the SimpleShapeApplication class and is defined in src/Application/app.h.
