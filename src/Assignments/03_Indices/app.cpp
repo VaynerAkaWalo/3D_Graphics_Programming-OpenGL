@@ -118,6 +118,6 @@ void SimpleShapeApplication::init() {
 void SimpleShapeApplication::frame() {
     // Binding the VAO will set up all the required vertex attribute arrays.
     OGL_CALL(glBindVertexArray(vao_));
-    OGL_CALL(glDrawArrays(GL_TRIANGLES, 0, 9));
+    OGL_CALL(glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_BYTE, 0));
     OGL_CALL(glBindVertexArray(0));
 }
