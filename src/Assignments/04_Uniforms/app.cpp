@@ -51,6 +51,13 @@ void SimpleShapeApplication::init() {
         glUniformBlockBinding(program, u_mixer_index,0);
     }
 
+    auto u_transformations_index = glGetUniformBlockIndex(program, "Transformations");
+    if (u_transformations_index == GL_INVALID_INDEX) {
+        SPDLOG_WARN("Cannot find Transformations uniform block in program");
+    } else {
+        glUniformBlockBinding(program, u_transformations_index,1);
+    }
+
     GLuint v_buffer_handle;
     OGL_CALL(glGenBuffers(1, &v_buffer_handle));
     OGL_CALL(glBindBuffer(GL_ARRAY_BUFFER, v_buffer_handle));
@@ -67,6 +74,8 @@ void SimpleShapeApplication::init() {
     OGL_CALL(glGenBuffers(1, &interface_buffer_handle));
     OGL_CALL(glBindBuffer(GL_UNIFORM_BUFFER, interface_buffer_handle));
     OGL_CALL(glBufferData(GL_UNIFORM_BUFFER, 8 * sizeof(float), nullptr, GL_STATIC_DRAW));
+    OGL_CALL(glBindBuffer(GL_UNIFORM_BUFFER, 0));
+
 
     float strength = 0.5;
     float mix_color[3] = {0.0, 0.0, 1.0};
@@ -74,6 +83,13 @@ void SimpleShapeApplication::init() {
     OGL_CALL(glBindBufferBase(GL_UNIFORM_BUFFER, 0, interface_buffer_handle))
     OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(float), &strength))
     OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 16, sizeof(float) * 3, &mix_color))
+
+    GLuint transformations_buffer_handle;
+    OGL_CALL(glGenBuffers(1, &transformations_buffer_handle));
+    OGL_CALL(glBindBuffer(GL_UNIFORM_BUFFER, transformations_buffer_handle));
+    OGL_CALL(glBufferData(GL_UNIFORM_BUFFER, 10 * sizeof(float), nullptr, GL_STATIC_DRAW));
+    OGL_CALL(glBindBuffer(GL_UNIFORM_BUFFER, 0));
+
 
     OGL_CALL(glGenVertexArrays(1, &vao_));
     OGL_CALL(glBindVertexArray(vao_));
