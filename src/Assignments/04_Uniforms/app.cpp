@@ -52,6 +52,13 @@ void SimpleShapeApplication::init() {
             5, 4, 6
     };
 
+    auto u_mixer_index = glGetUniformBlockIndex(program, "Mixer");
+    if (u_mixer_index == GL_INVALID_INDEX) {
+        SPDLOG_WARN("Cannot find Mixer uniform block in program");
+    } else {
+        glUniformBlockBinding(program, u_mixer_index,0);
+    }
+
     /*
      * All the calls to the OpenGL API are "encapsulated" in the OGL_CALL macro for debugging purposes as explained in
      * Assignments/DEBUGGING.md. The macro is defined in src/Application/utils.h. If the call to the OpenGL API returns an
