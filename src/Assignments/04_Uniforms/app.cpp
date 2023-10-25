@@ -100,6 +100,12 @@ void SimpleShapeApplication::init() {
     glm::vec2 trans{0.0,  -0.25};
     glm::vec2 scale{0.5, 0.5};
 
+    OGL_CALL(glBindBufferBase(GL_UNIFORM_BUFFER, 1, transformations_buffer_handle));
+    OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 0, 2 * sizeof(float), &scale));
+    OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 2 * sizeof(float), 2 * sizeof(float), &trans));
+    OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 4 * sizeof(float), 2 * sizeof(float), &rot[0]));
+    OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 8 * sizeof(float), 2 * sizeof(float), &rot[1]));
+
     OGL_CALL(glGenVertexArrays(1, &vao_));
     OGL_CALL(glBindVertexArray(vao_));
     OGL_CALL(glBindBuffer(GL_ARRAY_BUFFER, v_buffer_handle));
