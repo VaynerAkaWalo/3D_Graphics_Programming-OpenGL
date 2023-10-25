@@ -9,6 +9,8 @@ layout(std140) uniform Mixer {
     vec3  mix_color;
 };
 
+out vec4 fragColor;
+
 void main() {
-    vFragColor = vertex_color;
+    vFragColor.rgb = mix(vertex_color.rgb, mix_color, strength);;
 }
