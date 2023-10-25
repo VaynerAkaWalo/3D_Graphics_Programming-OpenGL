@@ -71,6 +71,10 @@ void SimpleShapeApplication::init() {
     float strength = 0.5;
     float mix_color[3] = {0.0, 0.0, 1.0};
 
+    OGL_CALL(glBindBufferBase(GL_UNIFORM_BUFFER, 0, interface_buffer_handle))
+    OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(float), &strength))
+    OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 16, sizeof(float) * 3, &mix_color))
+
     OGL_CALL(glGenVertexArrays(1, &vao_));
     OGL_CALL(glBindVertexArray(vao_));
     OGL_CALL(glBindBuffer(GL_ARRAY_BUFFER, v_buffer_handle));
