@@ -12,6 +12,7 @@ layout(std140) uniform Transformations {
 out vec4 vertex_color;
 
 void main() {
-    gl_Position = a_vertex_position;
+    gl_Position.xy = rotation*(scale*a_vertex_position.xy)+translation;
+    gl_Position.zw = a_vertex_position.zw;
     vertex_color = a_vertex_color;
 }
