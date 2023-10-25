@@ -12,6 +12,9 @@
 #include "glad/gl.h"
 
 #include "Application/utils.h"
+#include "glm/vec2.hpp"
+#include "glm/glm.hpp"
+#include "glm/ext/scalar_constants.hpp"
 
 void SimpleShapeApplication::init() {
 
@@ -90,6 +93,12 @@ void SimpleShapeApplication::init() {
     OGL_CALL(glBufferData(GL_UNIFORM_BUFFER, 10 * sizeof(float), nullptr, GL_STATIC_DRAW));
     OGL_CALL(glBindBuffer(GL_UNIFORM_BUFFER, 0));
 
+    float theta = 1.0*glm::pi<float>()/6.0f;//30 degrees
+    auto cs = std::cos(theta);
+    auto ss = std::sin(theta);
+    glm::mat2 rot{cs,ss,-ss,cs};
+    glm::vec2 trans{0.0,  -0.25};
+    glm::vec2 scale{0.5, 0.5};
 
     OGL_CALL(glGenVertexArrays(1, &vao_));
     OGL_CALL(glBindVertexArray(vao_));
