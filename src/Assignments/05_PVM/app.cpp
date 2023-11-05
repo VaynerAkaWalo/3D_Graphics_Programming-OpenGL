@@ -90,21 +90,13 @@ void SimpleShapeApplication::init() {
     GLuint transformations_buffer_handle;
     OGL_CALL(glGenBuffers(1, &transformations_buffer_handle));
     OGL_CALL(glBindBuffer(GL_UNIFORM_BUFFER, transformations_buffer_handle));
-    OGL_CALL(glBufferData(GL_UNIFORM_BUFFER, 10 * sizeof(float), nullptr, GL_STATIC_DRAW));
+    OGL_CALL(glBufferData(GL_UNIFORM_BUFFER, 16 * sizeof(float), nullptr, GL_STATIC_DRAW));
     OGL_CALL(glBindBuffer(GL_UNIFORM_BUFFER, 0));
 
-    float theta = 1.0*glm::pi<float>()/6.0f;//30 degrees
-    auto cs = std::cos(theta);
-    auto ss = std::sin(theta);
-    glm::mat2 rot{cs,ss,-ss,cs};
-    glm::vec2 trans{0.0,  -0.25};
-    glm::vec2 scale{0.5, 0.5};
+    glm::mat4 PVM(1.0f);
 
     OGL_CALL(glBindBufferBase(GL_UNIFORM_BUFFER, 1, transformations_buffer_handle));
-    OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 0, 2 * sizeof(float), &scale));
-    OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 2 * sizeof(float), 2 * sizeof(float), &trans));
-    OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 4 * sizeof(float), 2 * sizeof(float), &rot[0]));
-    OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 8 * sizeof(float), 2 * sizeof(float), &rot[1]));
+    OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 0, 16 * sizeof(float), &PVM[0]));
 
     OGL_CALL(glGenVertexArrays(1, &vao_));
     OGL_CALL(glBindVertexArray(vao_));
