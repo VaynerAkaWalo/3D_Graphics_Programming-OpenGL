@@ -44,8 +44,8 @@ void SimpleShapeApplication::init() {
 
     std::vector<GLubyte> indexes = {
             0, 1, 2,
-            3, 4, 5,
-            5, 4, 6
+            5, 4, 3,
+            6, 4, 5
     };
 
     auto u_transformations_index = glGetUniformBlockIndex(program, "Transformations");
@@ -112,6 +112,7 @@ void SimpleShapeApplication::init() {
     OGL_CALL(glViewport(0, 0, w, h));
 
     OGL_CALL(glUseProgram(program));
+    glEnable(GL_CULL_FACE);
 }
 
 void SimpleShapeApplication::frame() {
