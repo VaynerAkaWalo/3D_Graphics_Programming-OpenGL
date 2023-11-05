@@ -15,6 +15,7 @@
 #include "glm/vec2.hpp"
 #include "glm/glm.hpp"
 #include "glm/ext/scalar_constants.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 void SimpleShapeApplication::init() {
 
@@ -93,7 +94,20 @@ void SimpleShapeApplication::init() {
     OGL_CALL(glBufferData(GL_UNIFORM_BUFFER, 16 * sizeof(float), nullptr, GL_STATIC_DRAW));
     OGL_CALL(glBindBuffer(GL_UNIFORM_BUFFER, 0));
 
+    auto [w, h] = frame_buffer_size();
+
     glm::mat4 PVM(1.0f);
+
+    glm::mat4 M(1.0);
+    M = glm::translate(M, glm::vec3(-1.0f, 1.0f, 0.0f));
+
+    glm::mat4 V(1.0);
+    V = glm::lookAt(glm::vec3(0.0f, -2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+    glm::mat4 P(1.0);
+    P = glm::perspective(glm::radians(45.0f), (float)w / (float)h, 0.1f, 20.0f);
+
+    PVM = P * V * M;
 
     OGL_CALL(glBindBufferBase(GL_UNIFORM_BUFFER, 1, transformations_buffer_handle));
     OGL_CALL(glBufferSubData(GL_UNIFORM_BUFFER, 0, 16 * sizeof(float), &PVM[0]));
@@ -117,7 +131,6 @@ void SimpleShapeApplication::init() {
 
     OGL_CALL(glClearColor(0.81f, 0.81f, 0.8f, 1.0f));
 
-    auto [w, h] = frame_buffer_size();
     OGL_CALL(glViewport(0, 0, w, h));
 
     OGL_CALL(glUseProgram(program));
