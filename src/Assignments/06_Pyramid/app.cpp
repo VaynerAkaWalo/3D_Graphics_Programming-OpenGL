@@ -31,21 +31,39 @@ void SimpleShapeApplication::init() {
         exit(-1);
     }
 
-    //        coordinates   |       colors
+    //        coordinates       |       colors
     std::vector<GLfloat> vertices = {
-            -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
-            0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
-            0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-            -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-            0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-            -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-            0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+            -0.5f, 0.5f, 0.0f, 0.5f, 0.5f, 0.5f, // b-tl 0
+            0.5f, 0.5f, 0.0f, 0.5f, 0.5f, 0.5f, // b-tr
+            -0.5f, -0.5f, 0.0f, 0.5f, 0.5f, 0.5f, // b-bl
+            0.5f, -0.5f, 0.0f, 0.5f, 0.5f, 0.5f, // b-br
+
+            0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, // apex-red 4
+            0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, //apex-green 5
+            0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, //apex-blue 6
+            0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, //apex-yellow 7
+
+            -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, // green-tl 8
+            -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, // green-bl
+
+            -0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, // blue-tl 10
+            0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, // blue-tr
+
+            0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, // red-tr 12
+            0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, // red-br
+
+            -0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f, // yellow-bl 14
+            0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f, // yellow-br
     };
 
     std::vector<GLubyte> indexes = {
-            0, 1, 2,
-            5, 4, 3,
-            6, 4, 5
+            2, 0, 1,
+            3, 2, 1,
+
+            9, 5, 8, //green
+            10, 6, 11, // blue
+            13, 12, 4, // red
+            14, 15, 7 //yellow
     };
 
     auto u_transformations_index = glGetUniformBlockIndex(program, "Transformations");
@@ -110,6 +128,7 @@ void SimpleShapeApplication::init() {
     OGL_CALL(glClearColor(0.81f, 0.81f, 0.8f, 1.0f));
 
     OGL_CALL(glViewport(0, 0, w, h));
+    glEnable(GL_DEPTH_TEST);
 
     OGL_CALL(glUseProgram(program));
     glEnable(GL_CULL_FACE);
@@ -117,6 +136,6 @@ void SimpleShapeApplication::init() {
 
 void SimpleShapeApplication::frame() {
     OGL_CALL(glBindVertexArray(vao_));
-    OGL_CALL(glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_BYTE, 0));
+    OGL_CALL(glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_BYTE, 0));
     OGL_CALL(glBindVertexArray(0));
 }
