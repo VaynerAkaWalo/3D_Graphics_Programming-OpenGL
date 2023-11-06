@@ -15,3 +15,12 @@ Ale proszę usunąć wykomentowane wierzchołki.
 
 30.10.2023 10:59:25 OK
 
+# PVM
+
+6.11.2023 11:03:50 OK
+
+# Pyramid
+
+6.11.2023 11:04:52 OK
+
+
