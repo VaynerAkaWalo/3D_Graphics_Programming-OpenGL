@@ -23,4 +23,10 @@ Ale proszę usunąć wykomentowane wierzchołki.
 
 6.11.2023 11:04:52 OK
 
+# Resize
+
+13.11.2023 11:56:51 OK
+
+
+
 
