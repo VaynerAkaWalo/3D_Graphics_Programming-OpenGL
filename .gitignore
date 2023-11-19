@@ -22,3 +22,4 @@ cmake-build-release/
 *.ipynb
 
 Notebooks/zoom.png
+.vscode/settings.json
