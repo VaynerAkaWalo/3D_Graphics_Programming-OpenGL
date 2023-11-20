@@ -27,6 +27,9 @@ Ale proszę usunąć wykomentowane wierzchołki.
 
 13.11.2023 11:56:51 OK
 
+# Zoom
 
+20.11.2023 17:30:36
+Resize nie działa. Brak ustawienia aspektu w metodzie framebuffer_resize_callback. 
 
 
