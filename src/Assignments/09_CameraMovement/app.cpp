@@ -123,6 +123,8 @@ void SimpleShapeApplication::init() {
 
     OGL_CALL(glUseProgram(program));
     glEnable(GL_CULL_FACE);
+
+    set_controller(new CameraController(camera()));
 }
 
 
@@ -151,4 +153,26 @@ void SimpleShapeApplication::framebuffer_resize_callback(int w, int h) {
 void SimpleShapeApplication::scroll_callback(double xoffset, double yoffset) {
     Application::scroll_callback(xoffset, yoffset);   
     camera()->zoom(yoffset / 20.0f);
+}
+
+void SimpleShapeApplication::mouse_button_callback(int button, int action, int mods) {
+    Application::mouse_button_callback(button, action, mods);
+
+    if (controller_) {
+        double x, y;
+        glfwGetCursorPos(window_, &x, &y);
+
+        if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+            controller_->LMB_pressed(x, y);
+
+        if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
+            controller_->LMB_released(x, y);
+    }
+}
+
+void SimpleShapeApplication::cursor_position_callback(double x, double y) {
+    Application::cursor_position_callback(x, y);
+    if (controller_) {
+        controller_->mouse_moved(x, y);
+    }
 }
