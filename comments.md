@@ -32,4 +32,10 @@ Ale proszę usunąć wykomentowane wierzchołki.
 20.11.2023 17:30:36
 Resize nie działa. Brak ustawienia aspektu w metodzie framebuffer_resize_callback. 
 
+4.12.2023  13:36:54 OK
+
+# Camera movement
+
+4.12.2023 13:36:13 OK
+
 
