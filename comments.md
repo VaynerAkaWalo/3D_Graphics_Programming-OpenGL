@@ -38,4 +38,7 @@ Resize nie działa. Brak ustawienia aspektu w metodzie framebuffer_resize_callba
 
 4.12.2023 13:36:13 OK
 
+# Mesh
 
+2023-12-13 10:33:37
+Nie kompiluje się. Brakuje średników po definicjach klas w plikach `camera.h` i `CameraControler.h`. 
