@@ -43,5 +43,5 @@ namespace xe {
             bool LMB_pressed_ = false;
             float x_;
             float y_; 
-            }
-};
+            };
+}

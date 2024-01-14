@@ -115,5 +115,5 @@ namespace xe {
         float aspect_;
         float near_;
         float far_;
-        }
-};
+        };
+}
