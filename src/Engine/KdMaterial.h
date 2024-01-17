@@ -8,7 +8,7 @@ namespace xe {
             bool use_vertex_colors = false;
             GLuint texture_;
         public:
-            KdMaterial(const glm::vec4 &Kd) : Kd_(Kd) {}
+            KdMaterial(const glm::vec4 &Kd) : Kd_(Kd), texture_(0) {}
 
             KdMaterial(const glm::vec4 &Kd, bool use_vertex_colors, GLuint texture) : Kd_(Kd) {
                 use_vertex_colors = use_vertex_colors;
