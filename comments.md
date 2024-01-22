@@ -1,4 +1,4 @@
-# Total 82/147
+# Total 97/147
 
 # House 2/2
 
@@ -45,7 +45,7 @@ Resize nie działa. Brak ustawienia aspektu w metodzie framebuffer_resize_callba
 2023-12-13 10:33:37
 Nie kompiluje się. Brakuje średników po definicjach klas w plikach `camera.h` i `CameraControler.h`. 
 
-# Kd material
+# Kd material 15/20
 
 15.01.2024 15:53:54
 Program wywala się od czasu do czasu. Wynika to z nie zaincjalizowania pola `texture_` do zera w konstruktorach. 
