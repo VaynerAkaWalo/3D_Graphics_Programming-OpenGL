@@ -50,6 +50,8 @@ Nie kompiluje się. Brakuje średników po definicjach klas w plikach `camera.h`
 15.01.2024 15:53:54
 Program wywala się od czasu do czasu. Wynika to z nie zaincjalizowania pola `texture_` do zera w konstruktorach. 
 
+22.01.2024 08:31:43 OK
+
 # Textures 12/15
 
 15.01.2024 16:02:00 OK
